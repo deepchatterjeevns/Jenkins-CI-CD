@@ -1,6 +1,6 @@
 node{
    stage('SCM Checkout'){
-     git 'https://github.com/NITHYANANDA18/my-app.git'
+     git 'https://github.com/deepchatterjeevns/jenkins-ci-cd.git'
    }
    stage('Compile-Package'){
 
@@ -18,19 +18,19 @@ node{
 
 
    stage('Build Docker Imager'){
-   sh 'docker build -t nithya18/myweb:0.0.2 .'
+   sh 'docker build -t deepchatterjee/myweb:0.0.2 .'
    }
    stage('Docker Image Push'){
    withCredentials([string(credentialsId: 'dockerPass', variable: 'dockerPassword')]) {
-   sh "docker login -u nithya18 -p ${dockerPassword}"
+   sh "docker login -u deepchatterjee -p ${dockerPassword}"
     }
-   sh 'docker push nithya18/myweb:0.0.2'
+   sh 'docker push deepchatterjee/myweb:0.0.2'
    }
 
    stage('Nexus Image Push'){
    sh "docker login -u admin -p admin123  13.126.35.8:8083"
-   sh "docker tag nithya18/myweb:0.0.2  13.126.35.8:8083/nit:1.0.0"
-   sh 'docker push  13.126.35.8:8083/nit:1.0.0'
+   sh "docker tag deepchatterjee/myweb:0.0.2  13.126.35.8:8083/deep:1.0.0"
+   sh 'docker push  13.126.35.8:8083/deep:1.0.0'
    }
 
    stage('Remove Previous Container'){
@@ -41,7 +41,7 @@ node{
 	}
 
    stage('Docker deployment'){
-   sh 'docker run -d -p 8090:8080 --name tomcattest nithya18/myweb:0.0.2' 
+   sh 'docker run -d -p 8090:8080 --name tomcattest deepchatterjee/myweb:0.0.2' 
    }
 }
 }
