@@ -1,6 +1,6 @@
 node{
    stage('SCM Checkout'){
-     git 'https://github.com/deepchatterjeevns/jenkins-ci-cd.git'
+     git 'https://github.com/deepchatterjeevns/Jenkins-CI-CD.git'
    }
    stage('Compile-Package'){
 
