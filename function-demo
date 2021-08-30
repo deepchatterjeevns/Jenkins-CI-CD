@@ -1,7 +1,7 @@
 // Added for demo
 node{
    stage('SCM Checkout'){
-     git 'https://github.com/javahometech/my-app'
+     git 'https://github.com/deepchatterjeevns/Jenkins-CI-CD'
    }
    stage('Compile-Package'){
       // Get maven home path
@@ -30,7 +30,7 @@ node{
        channel: '#jenkins-pipeline-demo',
        color: msgColor, 
        message: message, 
-       teamDomain: 'javahomecloud',
+       teamDomain: 'deepDevOps',
        tokenCredentialId: 'slack-demo'
    }
 
